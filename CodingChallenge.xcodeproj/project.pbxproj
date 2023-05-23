@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		2349FD6D261E4F6A00A1FEAA /* CodingChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2349FD6C261E4F6A00A1FEAA /* CodingChallengeTests.swift */; };
 		2349FD78261E4F6A00A1FEAA /* CodingChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2349FD77261E4F6A00A1FEAA /* CodingChallengeUITests.swift */; };
 		2349FD89261E4F9900A1FEAA /* ShiftsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2349FD88261E4F9900A1FEAA /* ShiftsView.swift */; };
+		87EB5BE42A1D45F200190A79 /* ShiftsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB5BE32A1D45F100190A79 /* ShiftsViewModel.swift */; };
+		87EB5BE62A1D474400190A79 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB5BE52A1D474400190A79 /* APICaller.swift */; };
+		87EB5BE82A1D47AE00190A79 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB5BE72A1D47AE00190A79 /* Shift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		2349FD77261E4F6A00A1FEAA /* CodingChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingChallengeUITests.swift; sourceTree = "<group>"; };
 		2349FD79261E4F6A00A1FEAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2349FD88261E4F9900A1FEAA /* ShiftsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftsView.swift; sourceTree = "<group>"; };
+		87EB5BE32A1D45F100190A79 /* ShiftsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftsViewModel.swift; sourceTree = "<group>"; };
+		87EB5BE52A1D474400190A79 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		87EB5BE72A1D47AE00190A79 /* Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +101,11 @@
 		2349FD59261E4F6900A1FEAA /* CodingChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				87EB5BE52A1D474400190A79 /* APICaller.swift */,
 				2349FD5A261E4F6900A1FEAA /* CodingChallengeApp.swift */,
 				2349FD88261E4F9900A1FEAA /* ShiftsView.swift */,
+				87EB5BE32A1D45F100190A79 /* ShiftsViewModel.swift */,
+				87EB5BE72A1D47AE00190A79 /* Shift.swift */,
 				2349FD5E261E4F6A00A1FEAA /* Assets.xcassets */,
 				2349FD63261E4F6A00A1FEAA /* Info.plist */,
 				2349FD60261E4F6A00A1FEAA /* Preview Content */,
@@ -192,8 +201,9 @@
 		2349FD4F261E4F6900A1FEAA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					2349FD56261E4F6900A1FEAA = {
 						CreatedOnToolsVersion = 12.4;
@@ -259,8 +269,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87EB5BE42A1D45F200190A79 /* ShiftsViewModel.swift in Sources */,
 				2349FD89261E4F9900A1FEAA /* ShiftsView.swift in Sources */,
 				2349FD5B261E4F6900A1FEAA /* CodingChallengeApp.swift in Sources */,
+				87EB5BE62A1D474400190A79 /* APICaller.swift in Sources */,
+				87EB5BE82A1D47AE00190A79 /* Shift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +432,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CodingChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = 7HRU3V63R2;
+				DEVELOPMENT_TEAM = 88MJ4S84C5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CodingChallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -441,7 +454,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CodingChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = 7HRU3V63R2;
+				DEVELOPMENT_TEAM = 88MJ4S84C5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CodingChallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

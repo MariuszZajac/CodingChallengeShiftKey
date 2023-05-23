@@ -8,20 +8,34 @@
 import SwiftUI
 
 struct ShiftsView: View {
-    var body: some View {
-        NavigationView {
-            Group {
-                Text("The main view should include a list of shifts. If you tap on a shift it should show a modal shift details view. Be creative and show us your best work.")
-                    .multilineTextAlignment(.center)
-                    .padding()
+    @StateObject private var shiftsViewModel = ShiftsViewModel()
+        
+        var body: some View {
+            List(shiftsViewModel.shifts, id: \.id) { shift in
+                ShiftCell(shift: shift)
             }
-            .navigationTitle("Shifts")
+            .onAppear {
+                shiftsViewModel.fetchShifts()
+            }
         }
     }
-}
 
-struct ShiftsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShiftsView()
+    struct ShiftCell: View {
+        let shift: Shift
+        
+        var body: some View {
+            VStack(alignment: .leading) {
+                Text(shift.position)
+                    .font(.headline)
+                Text(shift.dateAndTime)
+                    .font(.subheadline)
+                // Add any other relevant shift information here
+            }
+        }
     }
-}
+
+    struct ShiftsView_Previews: PreviewProvider {
+        static var previews: some View {
+            ShiftsView()
+        }
+    }
