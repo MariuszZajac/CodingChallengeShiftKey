@@ -8,34 +8,27 @@
 import SwiftUI
 
 struct ShiftsView: View {
-    @StateObject private var shiftsViewModel = ShiftsViewModel()
+    @State private var shifts = [Shift]()
+  
+    var body: some View {
+        List (shifts) {shifts in
+            
+            Text("\(shifts.shift_id)")
+                .bold()
+            
+        }
+                .padding(3)
+                .onAppear{
+                    Api().fetchShifts{(shifts) in self.shifts = shifts}
+                }
+                .navigationTitle("Shifts")
+            }
         
-        var body: some View {
-            List(shiftsViewModel.shifts, id: \.id) { shift in
-                ShiftCell(shift: shift)
-            }
-            .onAppear {
-                shiftsViewModel.fetchShifts()
-            }
-        }
     }
-
-    struct ShiftCell: View {
-        let shift: Shift
         
-        var body: some View {
-            VStack(alignment: .leading) {
-                Text(shift.position)
-                    .font(.headline)
-                Text(shift.dateAndTime)
-                    .font(.subheadline)
-                // Add any other relevant shift information here
+        struct ShiftsView_Previews: PreviewProvider {
+            static var previews: some View {
+                ShiftsView()
             }
         }
-    }
-
-    struct ShiftsView_Previews: PreviewProvider {
-        static var previews: some View {
-            ShiftsView()
-        }
-    }
+    

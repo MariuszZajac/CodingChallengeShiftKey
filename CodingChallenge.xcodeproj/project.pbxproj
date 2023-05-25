@@ -13,7 +13,6 @@
 		2349FD6D261E4F6A00A1FEAA /* CodingChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2349FD6C261E4F6A00A1FEAA /* CodingChallengeTests.swift */; };
 		2349FD78261E4F6A00A1FEAA /* CodingChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2349FD77261E4F6A00A1FEAA /* CodingChallengeUITests.swift */; };
 		2349FD89261E4F9900A1FEAA /* ShiftsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2349FD88261E4F9900A1FEAA /* ShiftsView.swift */; };
-		87EB5BE42A1D45F200190A79 /* ShiftsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB5BE32A1D45F100190A79 /* ShiftsViewModel.swift */; };
 		87EB5BE62A1D474400190A79 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB5BE52A1D474400190A79 /* APICaller.swift */; };
 		87EB5BE82A1D47AE00190A79 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB5BE72A1D47AE00190A79 /* Shift.swift */; };
 /* End PBXBuildFile section */
@@ -48,7 +47,6 @@
 		2349FD77261E4F6A00A1FEAA /* CodingChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingChallengeUITests.swift; sourceTree = "<group>"; };
 		2349FD79261E4F6A00A1FEAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2349FD88261E4F9900A1FEAA /* ShiftsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftsView.swift; sourceTree = "<group>"; };
-		87EB5BE32A1D45F100190A79 /* ShiftsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftsViewModel.swift; sourceTree = "<group>"; };
 		87EB5BE52A1D474400190A79 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		87EB5BE72A1D47AE00190A79 /* Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,7 +102,6 @@
 				87EB5BE52A1D474400190A79 /* APICaller.swift */,
 				2349FD5A261E4F6900A1FEAA /* CodingChallengeApp.swift */,
 				2349FD88261E4F9900A1FEAA /* ShiftsView.swift */,
-				87EB5BE32A1D45F100190A79 /* ShiftsViewModel.swift */,
 				87EB5BE72A1D47AE00190A79 /* Shift.swift */,
 				2349FD5E261E4F6A00A1FEAA /* Assets.xcassets */,
 				2349FD63261E4F6A00A1FEAA /* Info.plist */,
@@ -269,7 +266,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87EB5BE42A1D45F200190A79 /* ShiftsViewModel.swift in Sources */,
 				2349FD89261E4F9900A1FEAA /* ShiftsView.swift in Sources */,
 				2349FD5B261E4F6900A1FEAA /* CodingChallengeApp.swift in Sources */,
 				87EB5BE62A1D474400190A79 /* APICaller.swift in Sources */,

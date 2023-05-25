@@ -1,32 +1,34 @@
 import Foundation
 
-func fetchAvailableShifts(completion: @escaping (Result<[Shift], Error>) -> Void) {
-    let url = URL(string: "https://staging-app.shiftkey.com/api/v2/available_shifts")!
-
-    var request = URLRequest(url: url)
-    request.httpMethod = "GET"
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.setValue("application/json", forHTTPHeaderField: "Accept")
-
-    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-        if let error = error {
-            completion(.failure(error))
-            return
-        }
-        
-        guard let data = data else {
-            completion(.failure(NSError(domain: "", code: 0, userInfo: nil))) // Obsługa błędu braku danych
-            return
-        }
-        
-        do {
-            let decoder = JSONDecoder()
-            let shifts = try decoder.decode([Shift].self, from: data)
-            completion(.success(shifts))
-        } catch {
-            completion(.failure(error))
-        }
-    }
+class Api: ObservableObject{
+    @Published var shift = [Shift]()
     
-    task.resume()
-}
+    func fetchShifts(completion: @escaping ([Shift]) -> ()) {
+        guard let url = URL(string: "https://staging-app.shiftkey.com/api/v2/available_shifts?address=Dallas,%20TX&type=week") else {
+            print("Invalid URL")
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+            let shift = try! JSONDecoder().decode([Shift].self, from: data!)
+            print(shift)
+            DispatchQueue.main.async {
+                completion(shift)
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                print("Error with the response, unexpected status code: \(String(describing: response))")
+                return
+            }
+            
+        }
+                task.resume()
+            }
+        }
+        
+    
+
