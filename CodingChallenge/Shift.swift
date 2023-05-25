@@ -7,14 +7,83 @@
 
 import SwiftUI
 
-struct Shift: Codable, Identifiable {
-    var id = UUID()
+struct Specialty: Codable {
+    let id: Int
+    let name: String
+    let color: String
+    let abbreviation: String
+}
+
+struct LocalizedSpecialty: Codable {
+    let id: Int
+    let specialtyId: Int
+    let stateId: Int
+    let name: String
+    let abbreviation: String
+    let specialty: Specialty
     
-    let shift_id: Int
-    let normalized_start_date_time: Date
-    let normalized_end_date_time: Date
-    let shift_kind: String
-    let within_distance: Int
+    enum CodingKeys: String, CodingKey {
+            case id
+            case specialtyId = "specialty_id"
+            case stateId = "state_id"
+            case name
+            case abbreviation
+            case specialty
+        }
+}
+
+struct FacilityType: Codable {
+    let id: Int
+    let name: String
+    let color: String
+}
+
+struct Skill: Codable {
+    let id: Int
+    let name: String
+    let color: String
+}
+
+struct Shift: Codable, Identifiable {
+    var id: Int { shiftId }
+    let shiftId: Int
+    let startTime: String
+    let endTime: String
+    let normalizedStartDateTime: String
+    let normalizedEndDateTime: String
+    let timezone: String
+    let premiumRate: Bool
+    let covid: Bool
+    let shiftKind: String
+    let withinDistance: Int
+    let facilityType: FacilityType
+    let skill: Skill
+    let localizedSpecialty: LocalizedSpecialty
+    
+    enum CodingKeys: String, CodingKey {
+        case shiftId = "shift_id"
+        case startTime = "start_time"
+        case endTime = "end_time"
+        case normalizedStartDateTime = "normalized_start_date_time"
+        case normalizedEndDateTime = "normalized_end_date_time"
+        case timezone
+        case premiumRate = "premium_rate"
+        case covid
+        case shiftKind = "shift_kind"
+        case withinDistance = "within_distance"
+        case facilityType = "facility_type"
+        case skill
+        case localizedSpecialty = "localized_specialty"
+    }
+}
+
+struct ShiftData: Codable {
+    let date: String
+    let shifts: [Shift]
+}
+
+struct ShiftResponse: Codable {
+    let data: [ShiftData]
 }
 
 //"date": "2023-05-24",

@@ -8,23 +8,26 @@
 import SwiftUI
 
 struct ShiftsView: View {
-    @State private var shifts = [Shift]()
-  
-    var body: some View {
-        List (shifts) {shifts in
-            
-            Text("\(shifts.shift_id)")
-                .bold()
-            
-        }
-                .padding(3)
-                .onAppear{
-                    Api().fetchShifts{(shifts) in self.shifts = shifts}
-                }
-                .navigationTitle("Shifts")
-            }
-        
-    }
+    @StateObject private var api = Api()
+       
+       var body: some View {
+           List(api.shifts) { shift in
+               VStack(alignment: .leading) {
+                   Text("Start Date: \(shift.normalizedStartDateTime)")
+                  
+                   Text("Start Time: \(shift.startTime)")
+                   Text("End Time: \(shift.endTime)")
+                   // Add more shift properties as needed
+               }
+           }
+           .onAppear {
+               api.fetchShifts { shifts in
+                   // Update the shifts data
+               }
+           }
+       }
+   }
+
         
         struct ShiftsView_Previews: PreviewProvider {
             static var previews: some View {
