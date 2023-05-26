@@ -10,7 +10,7 @@ import SwiftUI
 struct ShiftsView: View {
     private let api = Api()
     @State var shifts: [Shift] = []
-    @State private var searchRadius: Int = 1
+    @State private var searchRadius: Int = 0
     @State private var isSearchingExactValue = false
     
     var body: some View {
@@ -23,6 +23,8 @@ struct ShiftsView: View {
 
                     Button(action: {
                         searchShifts()
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+
                     }) {
                         Text("Search")
                             .padding(.horizontal)
@@ -54,7 +56,8 @@ struct ShiftsView: View {
     private func fetchShifts() {
         api.fetchShifts(withinDistance: 150 , address: "Dallas, TX", type: "4day") { shifts in
             DispatchQueue.main.async {
-                self.shifts = shifts
+                self.shifts = shifts.sorted { $0.startTime < $1.startTime }
+
             }
         }
     }

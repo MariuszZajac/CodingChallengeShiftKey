@@ -11,49 +11,33 @@ struct ShiftRowView: View {
     let shift: Shift
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(" \(shift.shiftId)")
-                .font(.headline)
-            
-            HStack {
-                Text("From:")
-                Text(formatDateTime(shift.normalizedStartDateTime))
+        NavigationLink(destination: ShiftDetailView(shift: shift)) {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    Text("From:")
+                    Text(formatDateTime(shift.normalizedStartDateTime))
+                        .bold()
+                }
+                
+                HStack {
+                    Text("To:")
+                    Text(formatDateTime(shift.normalizedEndDateTime))
+                }
+                
+                HStack {
+                    Text(shift.shiftKind)
+                    Text("Place:")
+                    Text(shift.facilityType.name)
+                        .foregroundColor(Color(hex: shift.facilityType.color))
+                }
             }
-            
-            HStack {
-                Text("To:")
-                Text(formatDateTime(shift.normalizedEndDateTime))
-            }
-            
-            HStack {
-
-                Text(shift.shiftKind)
-            }
-//
-//            HStack {
-//                Text("Facility Type:")
-//                Text(shift.facilityType.name)
-//                    .foregroundColor(Color(hex: shift.facilityType.color))
-//            }
-//
-//            HStack {
-//                Text("Skill:")
-//                Text(shift.skill.name)
-//                    .foregroundColor(Color(hex: shift.skill.color))
-//            }
-//
-//            HStack {
-//                Text("Specialty:")
-//                Text(shift.localizedSpecialty.name)
-//                    .foregroundColor(Color(hex: shift.localizedSpecialty.specialty.color))
-//            }
+            .padding(10)
+            .background(Color.white)
+            .cornerRadius(8)
+            .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
         }
-        .padding(10)
-        .background(Color.white)
-        .cornerRadius(8)
-        .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
     }
-    
+
     private func formatDateTime(_ dateTime: String) -> String {
        
         return dateTime
