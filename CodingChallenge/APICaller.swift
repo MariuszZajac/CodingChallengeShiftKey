@@ -1,8 +1,6 @@
 import Foundation
 
-class Api: ObservableObject {
-    var shifts: [Shift] = []
-   
+final class Api {
     func fetchShifts(withinDistance distance: Int, address: String, type: String, completion: @escaping ([Shift]) -> ()) {
         guard var components = URLComponents(string: "https://staging-app.shiftkey.com/api/v2/available_shifts") else {
             print("Invalid URL")
@@ -13,6 +11,7 @@ class Api: ObservableObject {
             URLQueryItem(name: "address", value: address),
             URLQueryItem(name: "type", value: type)
         ]
+
         guard let url = components.url else {
             print("Invalid URL")
             return
@@ -22,29 +21,14 @@ class Api: ObservableObject {
                 print("Error: \(error.localizedDescription)")
                 return
             }
-            
-            
             if let jsonData = data {
                 do {
                     let decoder = JSONDecoder()
                     let shiftResponse = try decoder.decode(ShiftResponse.self, from: jsonData)
-                    self.shifts = shiftResponse.data.flatMap { $0.shifts }
-                    print(self.shifts)
-                    
-                    DispatchQueue.main.async {
-                        completion(self.shifts)
-                    }
-                    
-                    //            if let jsonData = jsonString.data(using: .utf8) {
-                    //                do {
-                    //                    let decoder = JSONDecoder()
-                    //                    let shiftResponse = try decoder.decode(ShiftResponse.self, from: jsonData)
-                    //                    self.shifts = shiftResponse.data.flatMap { $0.shifts }
-                    //                    print(self.shifts)
-                    //
-                    //                    DispatchQueue.main.async {
-                    //                        completion(self.shifts)
-                    //                    }
+                    let shifts = shiftResponse.data.flatMap { $0.shifts }
+                    print(shifts)
+
+                    completion(shifts)
                 } catch {
                     print("Error decoding JSON: \(error)")
                 }

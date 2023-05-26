@@ -8,53 +8,53 @@
 import SwiftUI
 
 struct ShiftsView: View {
-    @StateObject private var api = Api()
+    private let api = Api()
+    @State var shifts: [Shift] = []
     @State private var searchRadius: Int = 1
     @State private var isSearchingExactValue = false
     
     var body: some View {
-        NavigationStack{
-            
-            HStack {
-                TextField("Enter search radius", value: $searchRadius, formatter: NumberFormatter())
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .keyboardType(.numberPad)
-                
-                Button(action: {
-                    searchShifts()
-                }) {
-                    Text("Search")
-                        .padding(.horizontal)
-                        .foregroundColor(.white)
-                        .background(Color.blue)
-                        .cornerRadius(8)
-                }
-            }
-            .padding(.horizontal)
-            
+        NavigationStack {
             VStack {
-                if api.shifts.isEmpty {
-                    ProgressView("Loading shifts...")
-                    
-                } else {
-                    List(api.shifts) { shift in
-                        ShiftRowView(shift: shift)
+                HStack {
+                    TextField("Enter search radius", value: $searchRadius, formatter: NumberFormatter())
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numberPad)
+
+                    Button(action: {
+                        searchShifts()
+                    }) {
+                        Text("Search")
+                            .padding(.horizontal)
+                            .foregroundColor(.white)
+                            .background(Color.blue)
+                            .cornerRadius(8)
                     }
-                    
+                }
+                .padding(.horizontal)
+
+                Spacer()
+                VStack {
+                    if shifts.isEmpty {
+                        ProgressView("Loading shifts...")
+                    } else {
+                        List(shifts) { shift in
+                            ShiftRowView(shift: shift)
+                        }
+                    }
                 }
             }
             .navigationTitle("Available Shifts")
-            .onAppear {
+            .task {
                 fetchShifts()
             }
-            //  .searchable(text: $searchRadius, prompt: "Enter search radius")
         }
     }
     
     private func fetchShifts() {
         api.fetchShifts(withinDistance: 150 , address: "Dallas, TX", type: "4day") { shifts in
             DispatchQueue.main.async {
-                api.shifts = shifts
+                self.shifts = shifts
             }
         }
     }
@@ -62,11 +62,9 @@ struct ShiftsView: View {
         let roundedRadius = ((searchRadius + 9) / 10) * 10 // Round up to the nearest multiple of 10
         api.fetchShifts(withinDistance: roundedRadius , address: "Dallas, TX", type: "4day") { shifts in
             DispatchQueue.main.async {
-                api.shifts = shifts
+                self.shifts = shifts
             }
             print("Search Radius: \(roundedRadius)")
-            //   print("Search Radius: \(searchRadius)")
-            //print("Is Searching Exact Value: \(isSearchingExactValue)")
         }
     }
 }
