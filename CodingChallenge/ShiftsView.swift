@@ -52,7 +52,7 @@ struct ShiftsView: View {
     }
     
     private func fetchShifts() {
-        api.fetchShifts(withinDistance: 1 , address: "Dallas, TX", type: "4day") { shifts in
+        api.fetchShifts(withinDistance: 150 , address: "Dallas, TX", type: "4day") { shifts in
             DispatchQueue.main.async {
                 api.shifts = shifts
             }
@@ -60,13 +60,15 @@ struct ShiftsView: View {
     }
     private func searchShifts() {
         let roundedRadius = ((searchRadius + 9) / 10) * 10 // Round up to the nearest multiple of 10
-        
-        
-        print("Search Radius: \(roundedRadius)")
-        //   print("Search Radius: \(searchRadius)")
-        //print("Is Searching Exact Value: \(isSearchingExactValue)")
+        api.fetchShifts(withinDistance: roundedRadius , address: "Dallas, TX", type: "4day") { shifts in
+            DispatchQueue.main.async {
+                api.shifts = shifts
+            }
+            print("Search Radius: \(roundedRadius)")
+            //   print("Search Radius: \(searchRadius)")
+            //print("Is Searching Exact Value: \(isSearchingExactValue)")
+        }
     }
-    
 }
 
 struct ShiftsView_Previews: PreviewProvider {

@@ -12,41 +12,41 @@ struct ShiftRowView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Shift ID: \(shift.shiftId)")
+            Text(" \(shift.shiftId)")
                 .font(.headline)
             
             HStack {
-                Text("Start Time:")
+                Text("From:")
                 Text(formatDateTime(shift.normalizedStartDateTime))
             }
             
             HStack {
-                Text("End Time:")
+                Text("To:")
                 Text(formatDateTime(shift.normalizedEndDateTime))
             }
             
             HStack {
-                Text("Shift Kind:")
+
                 Text(shift.shiftKind)
             }
-            
-            HStack {
-                Text("Facility Type:")
-                Text(shift.facilityType.name)
-                    .foregroundColor(Color(hex: shift.facilityType.color))
-            }
-            
-            HStack {
-                Text("Skill:")
-                Text(shift.skill.name)
-                    .foregroundColor(Color(hex: shift.skill.color))
-            }
-            
-            HStack {
-                Text("Specialty:")
-                Text(shift.localizedSpecialty.name)
-                    .foregroundColor(Color(hex: shift.localizedSpecialty.specialty.color))
-            }
+//
+//            HStack {
+//                Text("Facility Type:")
+//                Text(shift.facilityType.name)
+//                    .foregroundColor(Color(hex: shift.facilityType.color))
+//            }
+//
+//            HStack {
+//                Text("Skill:")
+//                Text(shift.skill.name)
+//                    .foregroundColor(Color(hex: shift.skill.color))
+//            }
+//
+//            HStack {
+//                Text("Specialty:")
+//                Text(shift.localizedSpecialty.name)
+//                    .foregroundColor(Color(hex: shift.localizedSpecialty.specialty.color))
+//            }
         }
         .padding(10)
         .background(Color.white)
@@ -55,8 +55,7 @@ struct ShiftRowView: View {
     }
     
     private func formatDateTime(_ dateTime: String) -> String {
-        // Perform any necessary formatting for the date and time display
-        // Example: Convert to user's timezone, format as desired, etc.
+       
         return dateTime
     }
 }
