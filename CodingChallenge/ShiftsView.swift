@@ -9,29 +9,68 @@ import SwiftUI
 
 struct ShiftsView: View {
     @StateObject private var api = Api()
-       
-       var body: some View {
-           List(api.shifts) { shift in
-               VStack(alignment: .leading) {
-                   Text("Start Date: \(shift.normalizedStartDateTime)")
-                  
-                   Text("Start Time: \(shift.startTime)")
-                   Text("End Time: \(shift.endTime)")
-                   // Add more shift properties as needed
-               }
-           }
-           .onAppear {
-               api.fetchShifts { shifts in
-                   // Update the shifts data
-               }
-           }
-       }
-   }
-
-        
-        struct ShiftsView_Previews: PreviewProvider {
-            static var previews: some View {
-                ShiftsView()
+    @State private var searchRadius: Int = 1
+    @State private var isSearchingExactValue = false
+    
+    var body: some View {
+        NavigationStack{
+            
+            HStack {
+                TextField("Enter search radius", value: $searchRadius, formatter: NumberFormatter())
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .keyboardType(.numberPad)
+                
+                Button(action: {
+                    searchShifts()
+                }) {
+                    Text("Search")
+                        .padding(.horizontal)
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .cornerRadius(8)
+                }
+            }
+            .padding(.horizontal)
+            
+            VStack {
+                if api.shifts.isEmpty {
+                    ProgressView("Loading shifts...")
+                    
+                } else {
+                    List(api.shifts) { shift in
+                        ShiftRowView(shift: shift)
+                    }
+                    
+                }
+            }
+            .navigationTitle("Available Shifts")
+            .onAppear {
+                fetchShifts()
+            }
+            //  .searchable(text: $searchRadius, prompt: "Enter search radius")
+        }
+    }
+    
+    private func fetchShifts() {
+        api.fetchShifts(withinDistance: 1 , address: "Dallas, TX", type: "4day") { shifts in
+            DispatchQueue.main.async {
+                api.shifts = shifts
             }
         }
+    }
+    private func searchShifts() {
+        let roundedRadius = ((searchRadius + 9) / 10) * 10 // Round up to the nearest multiple of 10
+        
+        
+        print("Search Radius: \(roundedRadius)")
+        //   print("Search Radius: \(searchRadius)")
+        //print("Is Searching Exact Value: \(isSearchingExactValue)")
+    }
     
+}
+
+struct ShiftsView_Previews: PreviewProvider {
+    static var previews: some View {
+        ShiftsView()
+    }
+}
