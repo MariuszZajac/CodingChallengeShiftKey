@@ -1,7 +1,7 @@
 import Foundation
 
 final class Api {
-    func fetchShifts(withinDistance distance: Int, address: String, type: String, StartDateTime: Date?, completion: @escaping ([Shift]) -> ()) {
+    func fetchShifts(withinDistance distance: Int, address: String, type: String, completion: @escaping ([Shift]) -> ()) {
         
         guard var components = URLComponents(string: "https://staging-app.shiftkey.com/api/v2/available_shifts") else {
             print("Invalid URL")
@@ -13,7 +13,7 @@ final class Api {
             URLQueryItem(name: "within_distance", value: String(distance)),
             URLQueryItem(name: "address", value: address),
             URLQueryItem(name: "type", value: type),
-           // URLQueryItem(name: "start_date", value: dateString.startDateTime?) //???? TODO: ERROR!
+           // URLQueryItem(name: "start_date", value: dateString.startDateTime?) //???? TODO: ERROR! StartDateTime: Date?
         ]
 
         guard let url = components.url else {

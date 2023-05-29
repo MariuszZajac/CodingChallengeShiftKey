@@ -28,7 +28,7 @@ struct ShiftCalendarView: View {
                             }
                             .padding(5)
                             .onTapGesture {
-                                Api.fetchShifts(withinDistance: <#T##Int#>, address: <#T##String#>, type: <#T##String#>)
+                              //  Api.fetchShifts(withinDistance: <#T##Int#>, address: <#T##String#>, type: <#T##String#>) // TODO:
                             }
                         }
                 }
