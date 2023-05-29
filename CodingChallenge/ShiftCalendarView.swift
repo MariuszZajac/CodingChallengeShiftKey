@@ -10,39 +10,35 @@ import SwiftUI
 
 struct ShiftCalendarView: View {
     @State private var currentDate = Date()
-    
-    
     var body: some View {
-        ScrollView(.horizontal) {
-            LazyHStack(spacing: 0) {
-                ForEach(daysOfWeek(), id: \.self) { date in
-                    ZStack {
-                        
-                        Circle()
-                            .fill(isToday(date) ? Color.green : Color.clear)
-                            .frame(width: 25, height: 25)
-                            .overlay(
+        VStack (alignment: .leading) {
+                    LazyHStack(alignment: .center, spacing: 2) {
+                        ForEach(daysOfWeek(), id: \.self) { date in
+                            ZStack {
                                 Circle()
-                                    .stroke(Color.gray, lineWidth: 1)
-                            )
-                        
-                        Text("\(dayOfMonth(date))")
-                            .foregroundColor(isToday(date) ? .white : .black)
-                            .font(.system(size: 12))
-                    }
-                
-                    .padding(5)
-                    .onTapGesture {
-                        
-                        // TODO: On Click  present all shifts for click day
-                    }
-                    .frame(width: 50)
+                                    .fill(isToday(date) ? Color.green : Color.clear)
+                                    .frame(width: 25, height: 25)
+                                    .overlay(
+                                        Circle()
+                                            .stroke(Color.gray, lineWidth: 1)
+                                    )
+                                Text("\(dayOfMonth(date))")
+                                    .foregroundColor(isToday(date) ? .white : .black)
+                                    .font(.system(size: 12))
+                            }
+                            .padding(5)
+                            .onTapGesture {
+                                Api.fetchShifts(withinDistance: <#T##Int#>, address: <#T##String#>, type: <#T##String#>)
+                            }
+                        }
                 }
-                
+                    .frame(width: 350, height: 50)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(color: .gray, radius: 2, x: 0, y: 2)
             }
-            .alignmentGuide(.top) { _ in 0 }
-        }
     }
+    
     
     private func daysOfWeek() -> [Date] {
         let calendar = Calendar.current

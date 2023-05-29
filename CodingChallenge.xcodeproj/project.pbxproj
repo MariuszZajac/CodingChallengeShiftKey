@@ -17,6 +17,7 @@
 		875349BA2A210868000BA470 /* ShiftDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875349B92A210868000BA470 /* ShiftDetailView.swift */; };
 		875349BC2A21183C000BA470 /* DateFormatterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875349BB2A21183C000BA470 /* DateFormatterHelper.swift */; };
 		875349C02A2499A6000BA470 /* ShiftCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875349BF2A2499A6000BA470 /* ShiftCalendarView.swift */; };
+		875349C32A250C83000BA470 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875349C22A250C83000BA470 /* DateToString.swift */; };
 		87EB5BE62A1D474400190A79 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB5BE52A1D474400190A79 /* APICaller.swift */; };
 		87EB5BE82A1D47AE00190A79 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB5BE72A1D47AE00190A79 /* Shift.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		875349B92A210868000BA470 /* ShiftDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDetailView.swift; sourceTree = "<group>"; };
 		875349BB2A21183C000BA470 /* DateFormatterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterHelper.swift; sourceTree = "<group>"; };
 		875349BF2A2499A6000BA470 /* ShiftCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCalendarView.swift; sourceTree = "<group>"; };
+		875349C22A250C83000BA470 /* DateToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
 		87EB5BE52A1D474400190A79 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		87EB5BE72A1D47AE00190A79 /* Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 				875349BF2A2499A6000BA470 /* ShiftCalendarView.swift */,
 				875349B62A1FE605000BA470 /* ShiftRowView.swift */,
 				875349B92A210868000BA470 /* ShiftDetailView.swift */,
+				875349C12A250C63000BA470 /* Formatter */,
 				875349B82A2092D8000BA470 /* Models */,
 				2349FD5E261E4F6A00A1FEAA /* Assets.xcassets */,
 				2349FD63261E4F6A00A1FEAA /* Info.plist */,
@@ -154,6 +157,14 @@
 				87EB5BE72A1D47AE00190A79 /* Shift.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		875349C12A250C63000BA470 /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				875349C22A250C83000BA470 /* DateToString.swift */,
+			);
+			path = Formatter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +301,7 @@
 				875349C02A2499A6000BA470 /* ShiftCalendarView.swift in Sources */,
 				875349BC2A21183C000BA470 /* DateFormatterHelper.swift in Sources */,
 				2349FD89261E4F9900A1FEAA /* ShiftsView.swift in Sources */,
+				875349C32A250C83000BA470 /* DateToString.swift in Sources */,
 				2349FD5B261E4F6900A1FEAA /* CodingChallengeApp.swift in Sources */,
 				87EB5BE62A1D474400190A79 /* APICaller.swift in Sources */,
 				875349BA2A210868000BA470 /* ShiftDetailView.swift in Sources */,

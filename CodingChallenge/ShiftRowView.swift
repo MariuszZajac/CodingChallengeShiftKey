@@ -31,10 +31,13 @@ struct ShiftRowView: View {
                         .foregroundColor(Color(hex: shift.facilityType.color))
                 }
             }
+            .frame(maxWidth: .infinity)
+                    .fixedSize(horizontal: false, vertical: true)
             .padding(10)
             .background(Color.white)
-            .cornerRadius(8)
-            .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
+            .cornerRadius(10)
+            .shadow(color: .gray, radius: 2, x: 0, y: 2)
+            
         }
     }
 

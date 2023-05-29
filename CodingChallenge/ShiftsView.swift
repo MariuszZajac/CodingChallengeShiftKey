@@ -15,19 +15,23 @@ struct ShiftsView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 0) {
                 VStack {
                     ShiftCalendarView()
+                    
                     HStack {
                         TextField("Enter search radius", value: $searchRadius, formatter: NumberFormatter())
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .keyboardType(.numberPad)
-
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .shadow(color: .gray, radius: 2, x: 0, y: 2)
+                        
                         Button(action: {
                             let roundedRadius = ((searchRadius + 9) / 10) * 10
                             fetchShifts(withinDistance: roundedRadius, address: "Dallas, TX", type: "4day")
-                          
-
+                            
+                            
                         }) {
                             Text("Search")
                                 .padding(.horizontal)
@@ -35,10 +39,13 @@ struct ShiftsView: View {
                                 .background(Color.blue)
                                 .cornerRadius(8)
                         }
+                        
                     }
                     .padding(.horizontal)
                 }
-
+                .padding(.top)
+                
+                Spacer()
                 VStack {
                     if shifts.isEmpty {
                         ProgressView("Loading shifts...")
@@ -48,6 +55,7 @@ struct ShiftsView: View {
                         }
                     }
                 }
+                Spacer()
             }
             .navigationTitle("Available Shifts")
             .task {
@@ -64,21 +72,8 @@ struct ShiftsView: View {
             }
         }
     }
-
-    //private func searchShifts() {
-//
-//
-//
-//        // Round up to the nearest multiple of 10
-//        api.fetchShifts(withinDistance: roundedRadius , address: "Dallas, TX", type: "4day") { shifts in
-//            DispatchQueue.main.async {
-//                self.shifts = shifts
-//            }
-//            print("Search Radius: \(roundedRadius)")
-//        }
-//    }
+    
 }
-
 struct ShiftsView_Previews: PreviewProvider {
     static var previews: some View {
         ShiftsView()

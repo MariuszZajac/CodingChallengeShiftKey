@@ -29,7 +29,7 @@ struct ShiftDetailView: View {
             .padding()
             .background(Color.white)
             .cornerRadius(10)
-            .shadow(color: Color.gray.opacity(0.3), radius: 5, x: 0, y: 2)
+            .shadow(color: .gray, radius: 2, x: 0, y: 2)
             .padding(.horizontal, 20)
             .padding(.bottom, 20)
         }
