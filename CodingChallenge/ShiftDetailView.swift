@@ -12,11 +12,7 @@ struct ShiftDetailView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Shift Details")
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.bottom, 8)
-            
+         
             VStack(alignment: .leading, spacing: 8) {
                 DetailRow(title: "Shift ID", value: "\(shift.shiftId)")
                 DetailRow(title: "Start Time", value: shift.normalizedStartDateTime)
@@ -29,6 +25,7 @@ struct ShiftDetailView: View {
                 DetailRow(title: "Skill", value: shift.skill.name)
                 DetailRow(title: "Localized Specialty", value: shift.localizedSpecialty.name)
             }
+            
             .padding()
             .background(Color.white)
             .cornerRadius(10)
@@ -36,8 +33,10 @@ struct ShiftDetailView: View {
             .padding(.horizontal, 20)
             .padding(.bottom, 20)
         }
+        .navigationTitle("Shift Details")
         .padding(.top, 20)
         .navigationBarTitle("", displayMode: .inline)
+       
     }
 }
 
@@ -59,7 +58,7 @@ struct DetailRow: View {
 
 struct ShiftDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let shift = Shift(shiftId: 1, startTime: "9:00 AM", endTime: "", normalizedStartDateTime: "9:00 AM", normalizedEndDateTime: "5:00 PM", timezone: "", premiumRate: true, covid: false, shiftKind: "", withinDistance: 10, facilityType: FacilityType(id: 1, name: "Facility", color: ""), skill: Skill(id: 1, name: "Skill", color: ""), localizedSpecialty: LocalizedSpecialty(id: 1, specialtyId: 1, stateId: 1, name: "Specialty", abbreviation: "", specialty: Specialty(id: 1, name: "Specialty", color: "", abbreviation: "")))
+        let shift = Shift(shiftId: 1, startTime: "9:00 AM", endTime: "", normalizedStartDateTime: "", normalizedEndDateTime: "5:00 PM", timezone: "", premiumRate: true, covid: false, shiftKind: "", withinDistance: 10, facilityType: FacilityType(id: 1, name: "Facility", color: ""), skill: Skill(id: 1, name: "Skill", color: ""), localizedSpecialty: LocalizedSpecialty(id: 1, specialtyId: 1, stateId: 1, name: "Specialty", abbreviation: "", specialty: Specialty(id: 1, name: "Specialty", color: "", abbreviation: "")))
         
         ShiftDetailView(shift: shift)
     }
