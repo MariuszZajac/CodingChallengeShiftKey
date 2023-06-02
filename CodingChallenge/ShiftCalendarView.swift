@@ -28,7 +28,7 @@ struct ShiftCalendarView: View {
                             }
                             .padding(5)
                             .onTapGesture {
-                              //  Api.fetchShifts(withinDistance: <#T##Int#>, address: <#T##String#>, type: <#T##String#>) // TODO:
+                              //  Api.fetchShifts(withinDistance: <#T##Int#>, address: <#T##String#>, type: <#T##String#>)
                             }
                         }
                 }
@@ -43,12 +43,20 @@ struct ShiftCalendarView: View {
     private func daysOfWeek() -> [Date] {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: currentDate)
-        let weekday = calendar.component(.weekday, from: today)
-        let startOfWeek = calendar.date(byAdding: .day, value: 1 - weekday, to: today)!
-        let endOfWeek = calendar.date(byAdding: .day, value: 7 - weekday, to: today)!
-        
-        return calendar.generateDates(inside: startOfWeek ... endOfWeek, matchingUnit: .day)
+        let startOfWeek = calendar.date(byAdding: .day, value: -3, to: today)!
+        let endOfWeek = calendar.date(byAdding: .day, value: 3, to: today)!
+
+        var days = [Date]()
+        var currentDate = startOfWeek
+
+        while currentDate <= endOfWeek {
+            days.append(currentDate)
+            currentDate = calendar.date(byAdding: .day, value: 1, to: currentDate)!
+        }
+
+        return days
     }
+
     
     
     private func isToday(_ date: Date) -> Bool {

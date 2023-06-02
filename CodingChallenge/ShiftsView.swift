@@ -10,42 +10,21 @@ import SwiftUI
 struct ShiftsView: View {
     private let api = Api()
     @State var shifts: [Shift] = []
-    @State private var searchRadius: Int = 1
-    @State private var isSearchingExactValue = false
+   
     
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
                 VStack {
                     ShiftCalendarView()
-                    
-                    HStack {
-                        TextField("Enter search radius", value: $searchRadius, formatter: NumberFormatter())
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(.numberPad)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .shadow(color: .gray, radius: 2, x: 0, y: 2)
-                        
-                        Button(action: {
-                            let roundedRadius = ((searchRadius + 9) / 10) * 10
-                            fetchShifts(withinDistance: roundedRadius, address: "Dallas, TX", type: "4day")
-                            
-                            
-                        }) {
-                            Text("Search")
-                                .padding(.horizontal)
-                                .foregroundColor(.white)
-                                .background(Color.blue)
-                                .cornerRadius(8)
-                        }
-                        
-                    }
-                    .padding(.horizontal)
+                    Spacer()
+                        .frame(height: 20)
+                    SearchView()
                 }
                 .padding(.top)
                 
                 Spacer()
+                    .frame(height: 20)
                 VStack {
                     if shifts.isEmpty {
                         ProgressView("Loading shifts...")
@@ -57,7 +36,7 @@ struct ShiftsView: View {
                 }
                 Spacer()
             }
-            .navigationTitle("Available Shifts")
+            
             .task {
                 fetchShifts(withinDistance: 150, address: "Dallas, TX", type: "4day")
             }
