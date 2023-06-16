@@ -15,6 +15,9 @@ class MyPresenter<T: Codable>: ObservableObject {
         self.viewModel = viewModel
     }
     
+    
+    let apiClient = APIClientImpl(baseURL: URL(string: "https://staging-app.shiftkey.com/api/v2")!)
+     
     func fetchData(for endpoint: Endpoint) {
         apiClient.fetch(endpoint: endpoint) { [weak self] result in
             switch result {

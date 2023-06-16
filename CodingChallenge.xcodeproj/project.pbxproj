@@ -15,6 +15,9 @@
 		2349FD89261E4F9900A1FEAA /* ShiftsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2349FD88261E4F9900A1FEAA /* ShiftsView.swift */; };
 		8705C5B62A3C294F00972E26 /* MyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705C5B52A3C294F00972E26 /* MyPresenter.swift */; };
 		8705C5B92A3C2A3400972E26 /* ShiftsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705C5B82A3C2A3400972E26 /* ShiftsViewModel.swift */; };
+		8705C5C22A3C40E300972E26 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705C5C12A3C40E300972E26 /* HTTPMethod.swift */; };
+		8705C5C42A3C438600972E26 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705C5C32A3C438600972E26 /* Endpoint.swift */; };
+		8705C5C62A3C443B00972E26 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705C5C52A3C443B00972E26 /* APIClient.swift */; };
 		873765482A2C8CAF00F7FE54 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873765472A2C8CAF00F7FE54 /* APIError.swift */; };
 		875349B72A1FE605000BA470 /* ShiftRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875349B62A1FE605000BA470 /* ShiftRowView.swift */; };
 		875349BA2A210868000BA470 /* ShiftDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875349B92A210868000BA470 /* ShiftDetailView.swift */; };
@@ -59,6 +62,9 @@
 		2349FD88261E4F9900A1FEAA /* ShiftsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftsView.swift; sourceTree = "<group>"; };
 		8705C5B52A3C294F00972E26 /* MyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPresenter.swift; sourceTree = "<group>"; };
 		8705C5B82A3C2A3400972E26 /* ShiftsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftsViewModel.swift; sourceTree = "<group>"; };
+		8705C5C12A3C40E300972E26 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		8705C5C32A3C438600972E26 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		8705C5C52A3C443B00972E26 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		873765472A2C8CAF00F7FE54 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		875349B62A1FE605000BA470 /* ShiftRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftRowView.swift; sourceTree = "<group>"; };
 		875349B92A210868000BA470 /* ShiftDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDetailView.swift; sourceTree = "<group>"; };
@@ -119,17 +125,12 @@
 		2349FD59261E4F6900A1FEAA /* CodingChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				8705C5B42A3C281100972E26 /* Core */,
-				8705C5B72A3C2A1300972E26 /* ViewModel */,
 				2349FD5A261E4F6900A1FEAA /* CodingChallengeApp.swift */,
-				2349FD88261E4F9900A1FEAA /* ShiftsView.swift */,
-				875349C62A2A64B1000BA470 /* LogoView.swift */,
-				875349BF2A2499A6000BA470 /* ShiftCalendarView.swift */,
-				875349C42A2A6202000BA470 /* SearchView.swift */,
-				875349B62A1FE605000BA470 /* ShiftRowView.swift */,
-				875349B92A210868000BA470 /* ShiftDetailView.swift */,
-				875349C12A250C63000BA470 /* Formatter */,
+				8705C5BD2A3C401E00972E26 /* Networking */,
 				875349B82A2092D8000BA470 /* Models */,
+				8705C5B72A3C2A1300972E26 /* ViewModel */,
+				8705C5C72A3C451600972E26 /* View */,
+				875349C12A250C63000BA470 /* Formatter */,
 				2349FD5E261E4F6A00A1FEAA /* Assets.xcassets */,
 				2349FD63261E4F6A00A1FEAA /* Info.plist */,
 				2349FD60261E4F6A00A1FEAA /* Preview Content */,
@@ -167,9 +168,10 @@
 		8705C5B42A3C281100972E26 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				8705C5C52A3C443B00972E26 /* APIClient.swift */,
 				87EB5BE52A1D474400190A79 /* APICaller.swift */,
-				873765472A2C8CAF00F7FE54 /* APIError.swift */,
 				8705C5B52A3C294F00972E26 /* MyPresenter.swift */,
+				8705C5C02A3C408900972E26 /* Types */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -180,6 +182,37 @@
 				8705C5B82A3C2A3400972E26 /* ShiftsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8705C5BD2A3C401E00972E26 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8705C5B42A3C281100972E26 /* Core */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		8705C5C02A3C408900972E26 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				873765472A2C8CAF00F7FE54 /* APIError.swift */,
+				8705C5C12A3C40E300972E26 /* HTTPMethod.swift */,
+				8705C5C32A3C438600972E26 /* Endpoint.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		8705C5C72A3C451600972E26 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2349FD88261E4F9900A1FEAA /* ShiftsView.swift */,
+				875349C62A2A64B1000BA470 /* LogoView.swift */,
+				875349BF2A2499A6000BA470 /* ShiftCalendarView.swift */,
+				875349C42A2A6202000BA470 /* SearchView.swift */,
+				875349B62A1FE605000BA470 /* ShiftRowView.swift */,
+				875349B92A210868000BA470 /* ShiftDetailView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		875349B82A2092D8000BA470 /* Models */ = {
@@ -335,10 +368,13 @@
 				875349BC2A21183C000BA470 /* DateFormatterHelper.swift in Sources */,
 				873765482A2C8CAF00F7FE54 /* APIError.swift in Sources */,
 				2349FD89261E4F9900A1FEAA /* ShiftsView.swift in Sources */,
+				8705C5C62A3C443B00972E26 /* APIClient.swift in Sources */,
 				8705C5B62A3C294F00972E26 /* MyPresenter.swift in Sources */,
 				875349C32A250C83000BA470 /* DateToString.swift in Sources */,
 				2349FD5B261E4F6900A1FEAA /* CodingChallengeApp.swift in Sources */,
+				8705C5C42A3C438600972E26 /* Endpoint.swift in Sources */,
 				87EB5BE62A1D474400190A79 /* APICaller.swift in Sources */,
+				8705C5C22A3C40E300972E26 /* HTTPMethod.swift in Sources */,
 				875349BA2A210868000BA470 /* ShiftDetailView.swift in Sources */,
 				8705C5B92A3C2A3400972E26 /* ShiftsViewModel.swift in Sources */,
 				87EB5BE82A1D47AE00190A79 /* Shift.swift in Sources */,

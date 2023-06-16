@@ -2,22 +2,6 @@
 import Foundation
 import Combine
 
-protocol Endpoint {
-    var path: String { get }
-    var httpMethod: String? { get set }
-//    var parameters: [String: Any] { get }
-//    var headers: [String: String] { get }
- ///Make sure that the parameters are correct.!!!!
- func request(with baseURL: URL) -> URLRequest?
-}
-
-protocol APIClient {
-    var baseURL: URL { get }
-    var session: URLSession { get }
-    
-    func fetch<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> Void)
-}
-
 class APIClientImpl: APIClient {
     let baseURL: URL
     let session: URLSession
@@ -26,6 +10,8 @@ class APIClientImpl: APIClient {
         self.baseURL = baseURL
         self.session = session
     }
+    
+    let apiClient = APIClientImpl(baseURL: URL(string: "https://staging-app.shiftkey.com/api/v2")!)
     
     func fetch<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> Void) {
         guard let request = endpoint.request(with: baseURL) else {
