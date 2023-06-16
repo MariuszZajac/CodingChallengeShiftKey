@@ -7,10 +7,10 @@
 
 import Foundation
 class MyPresenter<T: Codable>: ObservableObject {
-    @Published var viewModel: MyViewModel<T>
+    @Published var viewModel: ShiftsViewModel<T>
     let apiClient: APIClient
     
-    init(apiClient: APIClient, viewModel: MyViewModel<T>) {
+    init(apiClient: APIClient, viewModel: ShiftsViewModel<T>) {
         self.apiClient = apiClient
         self.viewModel = viewModel
     }

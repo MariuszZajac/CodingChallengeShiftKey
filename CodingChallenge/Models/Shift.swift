@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct Specialty: Codable {
     let id: Int
@@ -85,6 +86,22 @@ struct ShiftData: Codable {
 struct ShiftResponse: Codable {
     let data: [ShiftData]
 }
+
+enum ShiftEndpoint {
+    case getShift
+}
+extension ShiftEndpoint: Endpoint{
+    var path: String {
+        switch self {
+        case .getShift:
+            return "/xxx" //na co ??? :TODO xxx
+        }
+    }
+    var httpMethod:  {
+        return .get
+    }
+}
+
 
 //"date": "2023-05-24",
 //            "shifts": [

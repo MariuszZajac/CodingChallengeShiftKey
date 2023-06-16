@@ -7,9 +7,19 @@
 
 import SwiftUI
 
-struct ShiftsView: View {
-    private let api = Api()
-    @State var shifts: [Shift] = []
+struct ShiftsView<T: Codable>: View {
+ 
+    
+    @StateObject var presenter: MyPresenter<T>
+    let viewModel : ShiftsViewModel<T>
+    let endpoint: Endpoint
+    
+    init(presenter: MyPresenter<T>, viewModel: ShiftsViewModel<T>, endpoint: Endpoint) {
+         self.presenter = presenter
+         self.viewModel = viewModel
+         self.presenter.viewModel = viewModel
+         self.endpoint = endpoint
+     }
    
     
     var body: some View {
@@ -26,35 +36,31 @@ struct ShiftsView: View {
                 Spacer()
                     .frame(height: 20)
                 VStack {
-                    if shifts.isEmpty {
-                        ProgressView("Loading shifts...")
+                    if let data = viewModel.data {
+                        //display data how??
                     } else {
-                        List(shifts) { shift in
-                            ShiftRowView(shift: shift)
+                        ProgressView("Loading shifts...")
                         }
                     }
+                .onAppear {
+                      presenter.fetchData(for: endpoint)
                 }
                 Spacer()
             }
-            
-            .task {
-                fetchShifts(withinDistance: 150, address: "Dallas, TX", type: "4day")
             }
         }
-    }
     
-    private func fetchShifts(withinDistance distance: Int, address: String, type: String) {
-        api.fetchShifts(withinDistance: distance, address: address, type: type) { shifts in
-            DispatchQueue.main.async {
-                self.shifts = shifts.sorted { $0.startTime < $1.startTime }
-                self.shifts = shifts.sorted{ $0.withinDistance < $1.withinDistance }
-            }
-        }
-    }
-    
-}
+//    private func fetchShifts(withinDistance distance: Int, address: String, type: String) {
+//        api.fetchShifts(withinDistance: distance, address: address, type: type) { shifts in
+//            DispatchQueue.main.async {
+//                self.shifts = shifts.sorted { $0.startTime < $1.startTime }
+//                self.shifts = shifts.sorted{ $0.withinDistance < $1.withinDistance }
+//            }
+//        }
+//    }
+//
 struct ShiftsView_Previews: PreviewProvider {
     static var previews: some View {
-        ShiftsView()
+        ShiftsView<<#T: Decodable & Encodable#>>()
     }
 }
