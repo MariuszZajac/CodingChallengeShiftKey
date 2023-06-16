@@ -11,8 +11,9 @@ import SwiftUI
 struct CodingChallengeApp: App {
     var body: some Scene {
         WindowGroup {
-            let presenter = MyPresenter<ShiftData>(apiClient: APIClient(), viewModel: ShiftsViewModel<ShiftData>())
-                        ShiftsView(presenter: presenter, viewModel: presenter.viewModel, endpoint: Endpoint())        }
+            ShiftsView(viewModel: ShiftsVieWModel()
+            )
+        }
     }
+    
 }
-
