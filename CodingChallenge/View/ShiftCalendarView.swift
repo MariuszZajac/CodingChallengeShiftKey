@@ -10,35 +10,42 @@ import SwiftUI
 
 struct ShiftCalendarView: View {
     @State private var currentDate = Date()
+    @State private var selectedDate: Date? = nil
+
     var body: some View {
         VStack (alignment: .leading) {
-                    LazyHStack(alignment: .center, spacing: 2) {
-                        ForEach(daysOfWeek(), id: \.self) { date in
-                            ZStack {
+            LazyHStack(alignment: .center, spacing: 2) {
+                ForEach(daysOfWeek(), id: \.self) { date in
+                    ZStack {
+                        Circle()
+                            .fill(isToday(date) ? Color.green : Color.clear)
+                            .frame(width: 25, height: 25)
+                            .overlay(
                                 Circle()
-                                    .fill(isToday(date) ? Color.green : Color.clear)
-                                    .frame(width: 25, height: 25)
-                                    .overlay(
-                                        Circle()
-                                            .stroke(Color.gray, lineWidth: 1)
-                                    )
-                                Text("\(dayOfMonth(date))")
-                                    .foregroundColor(isToday(date) ? .white : .black)
-                                    .font(.system(size: 12))
-                            }
-                            .padding(5)
-                            .onTapGesture {
-                              //TODO: Add search when click on button
-                            }
-                        }
+                                    .stroke(Color.gray, lineWidth: 1)
+                            )
+                        Text("\(dayOfMonth(date))")
+                            .foregroundColor(isToday(date) ? .white : .black)
+                            .font(.system(size: 12))
+                    }
+                    .padding(5)
+                    .onTapGesture {
+                        selectedDate = date // Aktualizacja wybranej daty po kliknięciu
+                    }
                 }
-                    .frame(width: 350, height: 50)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(color: .gray, radius: 2, x: 0, y: 2)
             }
+            .frame(width: 350, height: 50)
+            .background(Color.white)
+            .cornerRadius(10)
+            .shadow(color: .gray, radius: 2, x: 0, y: 2)
+            
+            if let selectedDate = selectedDate {
+
+            }
+        }
     }
     
+
     
     private func daysOfWeek() -> [Date] {
         let calendar = Calendar.current

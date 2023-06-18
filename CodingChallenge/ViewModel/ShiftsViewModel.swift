@@ -16,12 +16,12 @@ class ShiftsVieWModel: ObservableObject {
     enum State {
         case loading, error(Error), loaded
     }
-
     
-    func fetchShifts() {
-        
+    
+  public func fetchShifts(/**distance: Int, address: String, type: String*/) { //TODO: add parameters to function 
         let apiClient = DefaultAPIClient(session: URLSession.shared)
-        apiClient.perform(request: ShiftRequest(distance: 10, address: "Dallas, TX", type: "4day"))
+        let shiftRequest = ShiftRequest(distance: 10, address: "Dallas, TX", type: "4day")
+        apiClient.perform(request: shiftRequest)
             .eraseToAnyPublisher()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
@@ -31,12 +31,12 @@ class ShiftsVieWModel: ObservableObject {
                 case .failure(let error):
                     self?.state = .error(error)
                 }
-                
-            }, receiveValue: { [ weak self] data in
-                self?.dataShifts = data.data
+            }, receiveValue: { [weak self] responseData in
+                self?.dataShifts = responseData.data
             })
             .store(in: &cancellables)
-                
-         }
+    }
+    
 }
+
 
