@@ -7,25 +7,24 @@
 
 import SwiftUI
 
+
 struct ShiftDetailView: View {
-    let shift: Shift
-    
+    let viewModel: ShiftDetailViewModel
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-         
             VStack(alignment: .leading, spacing: 8) {
-                DetailRow(title: "Shift ID", value: "\(shift.shiftId)")
-                DetailRow(title: "Start Time", value: shift.normalizedStartDateTime)
-                DetailRow(title: "End Time", value: shift.normalizedEndDateTime)
-                DetailRow(title: "Premium Rate", value: shift.premiumRate ? "Yes" : "No")
-                DetailRow(title: "COVID", value: shift.covid ? "Yes" : "No")
-                DetailRow(title: "Shift Kind", value: shift.shiftKind)
-                DetailRow(title: "Within Distance", value: "\(shift.withinDistance) miles")
-                DetailRow(title: "Facility Type", value: shift.facilityType.name)
-                DetailRow(title: "Skill", value: shift.skill.name)
-                DetailRow(title: "Localized Specialty", value: shift.localizedSpecialty.name)
+                DetailRow(title: "Shift ID", value: viewModel.shiftID)
+                DetailRow(title: "Start Time", value: viewModel.startTime)
+                DetailRow(title: "End Time", value: viewModel.endTime)
+                DetailRow(title: "Premium Rate", value: viewModel.premiumRate)
+                DetailRow(title: "COVID", value: viewModel.covid)
+                DetailRow(title: "Shift Kind", value: viewModel.shiftKind)
+                DetailRow(title: "Within Distance", value: viewModel.withinDistance)
+                DetailRow(title: "Facility Type", value: viewModel.facilityType)
+                DetailRow(title: "Skill", value: viewModel.skill)
+                DetailRow(title: "Localized Specialty", value: viewModel.localizedSpecialty)
             }
-            
             .padding()
             .background(Color.white)
             .cornerRadius(10)
@@ -36,7 +35,6 @@ struct ShiftDetailView: View {
         .navigationTitle("Shift Details")
         .padding(.top, 20)
         .navigationBarTitle("", displayMode: .inline)
-       
     }
 }
 
@@ -60,6 +58,7 @@ struct ShiftDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let shift = Shift(shiftId: 1, startTime: "9:00 AM", endTime: "", normalizedStartDateTime: "", normalizedEndDateTime: "5:00 PM", timezone: "", premiumRate: true, covid: false, shiftKind: "", withinDistance: 10, facilityType: FacilityType(id: 1, name: "Facility", color: ""), skill: Skill(id: 1, name: "Skill", color: ""), localizedSpecialty: LocalizedSpecialty(id: 1, specialtyId: 1, stateId: 1, name: "Specialty", abbreviation: "", specialty: Specialty(id: 1, name: "Specialty", color: "", abbreviation: "")))
         
-        ShiftDetailView(shift: shift)
+        ShiftDetailView(viewModel: ShiftDetailViewModel(shift: shift))
+
     }
 }

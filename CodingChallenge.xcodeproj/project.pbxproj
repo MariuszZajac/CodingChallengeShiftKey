@@ -35,7 +35,9 @@
 		87BCF7112A3C6604001C35F8 /* ServerEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF7042A3C6604001C35F8 /* ServerEnvironment.swift */; };
 		87BCF7152A3C66B5001C35F8 /* ShiftRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF7142A3C66B5001C35F8 /* ShiftRequest.swift */; };
 		87BCF7182A3C680D001C35F8 /* ShiftAPIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF7172A3C680D001C35F8 /* ShiftAPIBuilder.swift */; };
-		87EB5BE82A1D47AE00190A79 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB5BE72A1D47AE00190A79 /* Shift.swift */; };
+		87BCF71C2A3C7FD3001C35F8 /* ShiftDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF71B2A3C7FD3001C35F8 /* ShiftDetailViewModel.swift */; };
+		87BCF71E2A3C8168001C35F8 /* ExtractTimeFromDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF71D2A3C8168001C35F8 /* ExtractTimeFromDateTime.swift */; };
+		87EB5BE82A1D47AE00190A79 /* ShiftModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB5BE72A1D47AE00190A79 /* ShiftModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +92,9 @@
 		87BCF7042A3C6604001C35F8 /* ServerEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerEnvironment.swift; sourceTree = "<group>"; };
 		87BCF7142A3C66B5001C35F8 /* ShiftRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftRequest.swift; sourceTree = "<group>"; };
 		87BCF7172A3C680D001C35F8 /* ShiftAPIBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftAPIBuilder.swift; sourceTree = "<group>"; };
-		87EB5BE72A1D47AE00190A79 /* Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
+		87BCF71B2A3C7FD3001C35F8 /* ShiftDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDetailViewModel.swift; sourceTree = "<group>"; };
+		87BCF71D2A3C8168001C35F8 /* ExtractTimeFromDateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractTimeFromDateTime.swift; sourceTree = "<group>"; };
+		87EB5BE72A1D47AE00190A79 /* ShiftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				8705C5B82A3C2A3400972E26 /* ShiftsViewModel.swift */,
+				87BCF71B2A3C7FD3001C35F8 /* ShiftDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -205,7 +210,7 @@
 		875349B82A2092D8000BA470 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				87EB5BE72A1D47AE00190A79 /* Shift.swift */,
+				87EB5BE72A1D47AE00190A79 /* ShiftModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				875349C22A250C83000BA470 /* DateToString.swift */,
+				87BCF71D2A3C8168001C35F8 /* ExtractTimeFromDateTime.swift */,
 			);
 			path = Formatter;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				875349C52A2A6202000BA470 /* SearchView.swift in Sources */,
+				87BCF71E2A3C8168001C35F8 /* ExtractTimeFromDateTime.swift in Sources */,
 				87BCF7102A3C6604001C35F8 /* DefaultAPIClient.swift in Sources */,
 				87BCF70F2A3C6604001C35F8 /* APIRequest.swift in Sources */,
 				875349B72A1FE605000BA470 /* ShiftRowView.swift in Sources */,
@@ -445,6 +452,7 @@
 				87BCF70A2A3C6604001C35F8 /* URLRequestSending.swift in Sources */,
 				87BCF7152A3C66B5001C35F8 /* ShiftRequest.swift in Sources */,
 				875349C32A250C83000BA470 /* DateToString.swift in Sources */,
+				87BCF71C2A3C7FD3001C35F8 /* ShiftDetailViewModel.swift in Sources */,
 				87BCF7072A3C6604001C35F8 /* Foundation.URLRequest.swift in Sources */,
 				87BCF7092A3C6604001C35F8 /* APIClient.swift in Sources */,
 				87BCF7062A3C6604001C35F8 /* Foundation.URLComponents.swift in Sources */,
@@ -453,7 +461,7 @@
 				875349BA2A210868000BA470 /* ShiftDetailView.swift in Sources */,
 				8705C5B92A3C2A3400972E26 /* ShiftsViewModel.swift in Sources */,
 				87BCF7112A3C6604001C35F8 /* ServerEnvironment.swift in Sources */,
-				87EB5BE82A1D47AE00190A79 /* Shift.swift in Sources */,
+				87EB5BE82A1D47AE00190A79 /* ShiftModel.swift in Sources */,
 				87BCF70D2A3C6604001C35F8 /* APIURLBuilder.swift in Sources */,
 				87BCF7082A3C6604001C35F8 /* APIError.swift in Sources */,
 				87BCF70C2A3C6604001C35F8 /* APIResponse.swift in Sources */,

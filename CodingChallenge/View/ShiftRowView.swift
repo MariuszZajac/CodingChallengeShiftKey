@@ -11,39 +11,39 @@ struct ShiftRowView: View {
     let shift: Shift
     
     var body: some View {
-        NavigationLink(destination: ShiftDetailView(shift: shift)) {
+        NavigationLink(destination: ShiftDetailView(viewModel: ShiftDetailViewModel(shift: shift))) {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text("From:")
-                    Text(formatDateTime(shift.normalizedStartDateTime))
-                        .bold()
-                }
-                
-                HStack {
-                    Text("To:")
-                    Text(formatDateTime(shift.normalizedEndDateTime))
-                }
-                
-                HStack {
                     Text(shift.shiftKind)
-                    Text("Place:")
+                    Text(",")
                     Text(shift.facilityType.name)
-                        .foregroundColor(Color(hex: shift.facilityType.color))
+                        
                 }
+                .foregroundColor(.black)
+                .font(.title3)
+                .lineLimit(1)
+                
+                HStack {
+                    Text("\(extractTimeFromDateTime(dateString: shift.normalizedStartDateTime))")
+                        .bold()
+                        .foregroundColor(.green)
+                    Text("--->")
+                        .foregroundColor(.blue)
+                        .bold()
+                    Text("\(extractTimeFromDateTime(dateString: shift.normalizedEndDateTime))")
+                        .bold()
+                        .foregroundColor(.red)
+                }
+                .bold()
             }
             .frame(maxWidth: .infinity)
-                    .fixedSize(horizontal: false, vertical: true)
+            .fixedSize(horizontal: false, vertical: true)
             .padding(10)
             .background(Color.white)
             .cornerRadius(10)
             .shadow(color: .gray, radius: 2, x: 0, y: 2)
             
         }
-    }
-
-    private func formatDateTime(_ dateTime: String) -> String {
-       
-        return dateTime
     }
 }
 
@@ -69,16 +69,3 @@ struct ShiftRowView_Previews: PreviewProvider {
     }
 }
 
-extension Color {
-    init(hex: String) {
-        let scanner = Scanner(string: hex)
-        var rgbValue: UInt64 = 0
-        scanner.scanHexInt64(&rgbValue)
-        
-        let r = Double((rgbValue & 0xFF0000) >> 16) / 255.0
-        let g = Double((rgbValue & 0x00FF00) >> 8) / 255.0
-        let b = Double(rgbValue & 0x0000FF) / 255.0
-        
-        self.init(red: r, green: g, blue: b)
-    }
-}
