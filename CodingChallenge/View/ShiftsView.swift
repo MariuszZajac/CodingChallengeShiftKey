@@ -10,6 +10,7 @@ import SwiftUI
 struct ShiftsView: View {
     @StateObject var viewModel: ShiftsViewModel
     
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -36,7 +37,13 @@ struct ShiftsView: View {
                             .frame(height: 20)
                     }
                     .padding(.top)
-                }
+                
+                case .searchData:
+                    SearchDataView()
+                    
+                    }
+                    
+                
             }
             
             
@@ -53,7 +60,9 @@ struct ShiftsView: View {
                         }
                     }
                 }
+                Spacer()
             }
+            
         }
         .onAppear {
             viewModel.fetchShifts(distance: 10, address: "Dallas, TX", type: "4day")

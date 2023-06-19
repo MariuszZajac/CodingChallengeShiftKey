@@ -14,7 +14,7 @@ class ShiftsViewModel: ObservableObject {
     
     @Published var state: State = .loading
     enum State {
-        case loading, error(Error), loaded
+        case loading, error(Error), loaded, searchData
     }
     
     

@@ -10,13 +10,17 @@ import SwiftUI
 class SearchViewModel: ObservableObject {
     @Published var searchRadius: Int!
     let shiftsViewModel: ShiftsViewModel
-
+    let searchRadiusData: [ Shift]
+    
     init(shiftsViewModel: ShiftsViewModel) {
         self.shiftsViewModel = shiftsViewModel
+        self.searchRadiusData = []
     }
 
-    func search() {
+    func search()-> [Shift]  {
         let roundedDistance = ((searchRadius + 9) / 10) * 10
-       // shiftsViewModel.fetchShifts(distance: roundedDistance, address: "Dallas, TX", type: "4day")
+      // return roundedDistance
+       shiftsViewModel.fetchShifts(distance: roundedDistance, address: "Dallas, TX", type: "4day")
+        return searchRadiusData
     }
 }
