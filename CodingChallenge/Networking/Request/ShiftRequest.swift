@@ -15,12 +15,14 @@ struct ShiftRequest: APIRequest {
     var urlBuilder: APIURLBuilder { ShiftAPIBuilder() }
     let distance: Int
     let address: String
-       
     let type: String
+   // let date: String
+    
     var query: [String : APIQueryParameter] {
         [ "type": .string(type),
           "address": .string(address),
           "radius": .int(distance)
+          //"date": .string(date)
         ]
     }
 }

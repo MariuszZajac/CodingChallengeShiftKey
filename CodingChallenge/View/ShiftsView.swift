@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShiftsView: View {
-    @StateObject var viewModel: ShiftsVieWModel
+    @StateObject var viewModel: ShiftsViewModel
     
     var body: some View {
         NavigationStack {
@@ -17,7 +17,7 @@ struct ShiftsView: View {
                     ShiftCalendarView()
                     Spacer()
                         .frame(height: 20)
-                    SearchView()
+                    SearchView(viewModel: SearchViewModel(shiftsViewModel: ShiftsViewModel()))
                 }
                 .padding(.top)
                 
@@ -39,7 +39,7 @@ struct ShiftsView: View {
                 }
             }
             .onAppear {
-                viewModel.fetchShifts()
+                viewModel.fetchShifts(distance: 10, address: "Dallas, TX", type: "4day")
             }
             Spacer()
         }
@@ -55,7 +55,7 @@ struct ShiftsView: View {
 //            self.shifts = shifts.sorted{ $0.withinDistance < $1.withinDistance }
 struct ShiftsView_Previews: PreviewProvider {
     static var previews: some View {
-        ShiftsView(viewModel: ShiftsVieWModel())
+        ShiftsView(viewModel: ShiftsViewModel())
     }
 }
 

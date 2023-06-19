@@ -37,6 +37,8 @@
 		87BCF7182A3C680D001C35F8 /* ShiftAPIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF7172A3C680D001C35F8 /* ShiftAPIBuilder.swift */; };
 		87BCF71C2A3C7FD3001C35F8 /* ShiftDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF71B2A3C7FD3001C35F8 /* ShiftDetailViewModel.swift */; };
 		87BCF71E2A3C8168001C35F8 /* ExtractTimeFromDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF71D2A3C8168001C35F8 /* ExtractTimeFromDateTime.swift */; };
+		87BCF7202A402434001C35F8 /* ShiftCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF71F2A402434001C35F8 /* ShiftCalendarViewModel.swift */; };
+		87BCF7222A4027C8001C35F8 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF7212A4027C8001C35F8 /* SearchViewModel.swift */; };
 		87EB5BE82A1D47AE00190A79 /* ShiftModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB5BE72A1D47AE00190A79 /* ShiftModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +96,8 @@
 		87BCF7172A3C680D001C35F8 /* ShiftAPIBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftAPIBuilder.swift; sourceTree = "<group>"; };
 		87BCF71B2A3C7FD3001C35F8 /* ShiftDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDetailViewModel.swift; sourceTree = "<group>"; };
 		87BCF71D2A3C8168001C35F8 /* ExtractTimeFromDateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractTimeFromDateTime.swift; sourceTree = "<group>"; };
+		87BCF71F2A402434001C35F8 /* ShiftCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCalendarViewModel.swift; sourceTree = "<group>"; };
+		87BCF7212A4027C8001C35F8 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		87EB5BE72A1D47AE00190A79 /* ShiftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +194,8 @@
 			children = (
 				8705C5B82A3C2A3400972E26 /* ShiftsViewModel.swift */,
 				87BCF71B2A3C7FD3001C35F8 /* ShiftDetailViewModel.swift */,
+				87BCF71F2A402434001C35F8 /* ShiftCalendarViewModel.swift */,
+				87BCF7212A4027C8001C35F8 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -457,6 +463,7 @@
 				87BCF7092A3C6604001C35F8 /* APIClient.swift in Sources */,
 				87BCF7062A3C6604001C35F8 /* Foundation.URLComponents.swift in Sources */,
 				2349FD5B261E4F6900A1FEAA /* CodingChallengeApp.swift in Sources */,
+				87BCF7222A4027C8001C35F8 /* SearchViewModel.swift in Sources */,
 				87BCF7182A3C680D001C35F8 /* ShiftAPIBuilder.swift in Sources */,
 				875349BA2A210868000BA470 /* ShiftDetailView.swift in Sources */,
 				8705C5B92A3C2A3400972E26 /* ShiftsViewModel.swift in Sources */,
@@ -466,6 +473,7 @@
 				87BCF7082A3C6604001C35F8 /* APIError.swift in Sources */,
 				87BCF70C2A3C6604001C35F8 /* APIResponse.swift in Sources */,
 				87BCF70E2A3C6604001C35F8 /* APIQueryParameter.swift in Sources */,
+				87BCF7202A402434001C35F8 /* ShiftCalendarViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class ShiftsVieWModel: ObservableObject {
+class ShiftsViewModel: ObservableObject {
     @Published var dataShifts = [ShiftData]()
     private var cancellables: [AnyCancellable] = []
     
@@ -18,9 +18,9 @@ class ShiftsVieWModel: ObservableObject {
     }
     
     
-  public func fetchShifts(/**distance: Int, address: String, type: String*/) { //TODO: add parameters to function 
+    public func fetchShifts(distance: Int, address: String, type: String) {
         let apiClient = DefaultAPIClient(session: URLSession.shared)
-        let shiftRequest = ShiftRequest(distance: 10, address: "Dallas, TX", type: "4day")
+        let shiftRequest = ShiftRequest(distance: distance, address: address, type: type)
         apiClient.perform(request: shiftRequest)
             .eraseToAnyPublisher()
             .receive(on: DispatchQueue.main)
