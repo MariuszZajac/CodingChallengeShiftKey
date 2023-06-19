@@ -13,10 +13,11 @@ struct ShiftRequest: APIRequest {
     var path: String {"available_shifts"}
     
     var urlBuilder: APIURLBuilder { ShiftAPIBuilder() }
+    //let date: String
     let distance: Int
     let address: String
     let type: String
-   // let date: String
+ 
     
     var query: [String : APIQueryParameter] {
         [ "type": .string(type),

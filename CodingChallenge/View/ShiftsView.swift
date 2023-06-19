@@ -12,39 +12,57 @@ struct ShiftsView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                VStack {
-                    ShiftCalendarView()
-                    Spacer()
-                        .frame(height: 20)
-                    SearchView(viewModel: SearchViewModel(shiftsViewModel: ShiftsViewModel()))
-                }
-                .padding(.top)
+            VStack {
+                LogoView()
+                    .frame(height: 55)
                 
-                Spacer()
-                    .frame(height: 20)
-                ScrollView {
-                    LazyVStack(alignment: .leading, pinnedViews: [.sectionHeaders]) {
-                        
-                        ForEach(viewModel.dataShifts, id: \.date) { shiftCollection in
-                            Section {
-                                ForEach(shiftCollection.shifts, id: \.shiftId) { shift in
-                                    ShiftRowView(shift: shift)
-                                }
-                            } header: {
-                                Text(shiftCollection.date)
+                
+                SearchView(viewModel: SearchViewModel(shiftsViewModel: ShiftsViewModel()))
+            }
+            VStack{
+                switch viewModel.state {
+                case .loading: ProgressView()
+                        .foregroundColor(Color(uiColor: .systemRed))
+                        .font(.body)
+                        .id("circlural_view")
+                    
+                case .error:
+                    ErrorView()
+                case .loaded:
+                    
+                    VStack {
+                        ShiftCalendarView()
+                        Spacer()
+                            .frame(height: 20)
+                    }
+                    .padding(.top)
+                }
+            }
+            
+            
+            ScrollView {
+                LazyVStack(alignment: .leading, pinnedViews: [.sectionHeaders]) {
+                    
+                    ForEach(viewModel.dataShifts, id: \.date) { shiftCollection in
+                        Section {
+                            ForEach(shiftCollection.shifts, id: \.shiftId) { shift in
+                                ShiftRowView(shift: shift)
                             }
+                        } header: {
+                            Text(shiftCollection.date)
                         }
                     }
                 }
             }
-            .onAppear {
-                viewModel.fetchShifts(distance: 10, address: "Dallas, TX", type: "4day")
-            }
-            Spacer()
         }
+        .onAppear {
+            viewModel.fetchShifts(distance: 10, address: "Dallas, TX", type: "4day")
+        }
+        
+        Spacer()
     }
 }
+
 
 
 

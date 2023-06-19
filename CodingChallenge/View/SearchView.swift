@@ -20,13 +20,14 @@ struct SearchView: View {
                 .shadow(color: .gray, radius: 2, x: 0, y: 2)
 
             Button(action: {
-                viewModel.search()
+               // viewModel.search() //TODO: Enter search radius
             }) {
                 Text("Search")
                     .padding(.horizontal)
                     .foregroundColor(.white)
                     .background(Color.blue)
                     .cornerRadius(8)
+                    .frame(width: 90, height: 10)
             }
         }
         .padding(.horizontal)

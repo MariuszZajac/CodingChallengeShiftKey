@@ -9,13 +9,35 @@ import SwiftUI
 
 struct LogoView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    //TODO: create logo
+        HStack {
+            ZStack {
+                Circle()
+                    .foregroundColor(.green)
+                    .frame(width: 50, height: 50)
+                Text("S")
+                    .font(.system(size: 39, weight: .bold))
+                    .foregroundColor(.white)
+            }
+            Text("Shiftit")
+                .font(.title)
+                .foregroundColor(.black)
+        }
+        
     }
 }
 
-struct LogoView_Previews: PreviewProvider {
-    static var previews: some View {
+
+
+
+struct ContentView: View {
+    var body: some View {
         LogoView()
+            .padding()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }

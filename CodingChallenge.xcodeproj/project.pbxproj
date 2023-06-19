@@ -39,6 +39,7 @@
 		87BCF71E2A3C8168001C35F8 /* ExtractTimeFromDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF71D2A3C8168001C35F8 /* ExtractTimeFromDateTime.swift */; };
 		87BCF7202A402434001C35F8 /* ShiftCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF71F2A402434001C35F8 /* ShiftCalendarViewModel.swift */; };
 		87BCF7222A4027C8001C35F8 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF7212A4027C8001C35F8 /* SearchViewModel.swift */; };
+		87BCF7262A40663D001C35F8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCF7252A40663D001C35F8 /* ErrorView.swift */; };
 		87EB5BE82A1D47AE00190A79 /* ShiftModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB5BE72A1D47AE00190A79 /* ShiftModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +99,7 @@
 		87BCF71D2A3C8168001C35F8 /* ExtractTimeFromDateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractTimeFromDateTime.swift; sourceTree = "<group>"; };
 		87BCF71F2A402434001C35F8 /* ShiftCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCalendarViewModel.swift; sourceTree = "<group>"; };
 		87BCF7212A4027C8001C35F8 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		87BCF7252A40663D001C35F8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		87EB5BE72A1D47AE00190A79 /* ShiftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				2349FD88261E4F9900A1FEAA /* ShiftsView.swift */,
+				87BCF7252A40663D001C35F8 /* ErrorView.swift */,
 				875349C62A2A64B1000BA470 /* LogoView.swift */,
 				875349BF2A2499A6000BA470 /* ShiftCalendarView.swift */,
 				875349C42A2A6202000BA470 /* SearchView.swift */,
@@ -470,6 +473,7 @@
 				87BCF7112A3C6604001C35F8 /* ServerEnvironment.swift in Sources */,
 				87EB5BE82A1D47AE00190A79 /* ShiftModel.swift in Sources */,
 				87BCF70D2A3C6604001C35F8 /* APIURLBuilder.swift in Sources */,
+				87BCF7262A40663D001C35F8 /* ErrorView.swift in Sources */,
 				87BCF7082A3C6604001C35F8 /* APIError.swift in Sources */,
 				87BCF70C2A3C6604001C35F8 /* APIResponse.swift in Sources */,
 				87BCF70E2A3C6604001C35F8 /* APIQueryParameter.swift in Sources */,

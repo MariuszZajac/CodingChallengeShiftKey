@@ -14,10 +14,15 @@ struct ShiftRowView: View {
         NavigationLink(destination: ShiftDetailView(viewModel: ShiftDetailViewModel(shift: shift))) {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text(shift.shiftKind)
-                    Text(",")
+                    Group {
+                        if shift.shiftKind == "Day Shift" { Image(systemName:"sun.max") }
+                        else {
+                            Image(systemName:"moon.zzz")
+                        }
+                    }
                     Text(shift.facilityType.name)
-                        
+                        .font(.title2)
+                    
                 }
                 .foregroundColor(.black)
                 .font(.title3)
